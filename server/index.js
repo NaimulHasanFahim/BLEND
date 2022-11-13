@@ -1,17 +1,11 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import cors from 'cors';
-import postRoutes from './routes/posts.js'
-import userRoutes from './routes/user.js'
+import dotenv from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+import postRoutes from './routes/posts.js';
+import userRoutes from './routes/user.js';
 
-import profileRoutes from './routes/profile.js'
-import session from 'express-session';
-import passport from 'passport';
-import passportLocalMongoose from 'passport-local-mongoose';
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import findOrCreate from'mongoose-findorcreate';
+import profileRoutes from './routes/profile.js';
 
 const app = express();
 dotenv.config();
@@ -27,6 +21,9 @@ app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 app.use('/profile', profileRoutes);
 
+app.get('/', (req, res)=>{
+    res.send("Server working successfully.")
+});
 
 // const CONNECTION_URL = 'mongodb+srv://nhfahimshah:12345fahim@cluster0.odpnf.mongodb.net/dataproject?retryWrites=true&w=majority';
 
